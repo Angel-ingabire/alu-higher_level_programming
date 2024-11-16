@@ -1,2 +1,10 @@
--- script that lists the number of records with the same score in the table 'second_table' of the database 'hbtn_0c_0' in your MySQL server
-SELECT score, COUNT(score) AS number FROM second_table GROUP BY score ORDER BY number DESC;
+-- Write a script that uses the hbtn_0d_tvshows database to list all genres of the show Dexter.
+-- Each record should display: tv_genres.name
+-- Results must be sorted in ascending order by the genre name
+
+SELECT tv_shows.title
+FROM tv_genres
+JOIN tv_show_genres ON tv_genres.id = tv_show_genres.genre_id
+JOIN tv_shows ON tv_shows.id = tv_show_genres.show_id
+WHERE tv_genres.name = "Comedy"
+ORDER BY tv_shows.title;
